@@ -1,0 +1,55 @@
+* Google Sheets to Python example
+
+This is a non-trivial version of how to get data from a Google Sheet into a Panda dataframe and then some examples of how to work with Pandas.
+
+** Setup
+
+I'm using essentially the same code as what is in this example to interface with Google Sheet:
+https://developers.google.com/sheets/api/quickstart/python
+
+In short:
+
+1. Create a Google Workspace API and enable the Sheets API for your Google Name: https://developers.google.com/workspace/guides/create-project
+
+   You should get a file called ~credentials.json~ that you should save with your project
+2. Install the dependencies:
+
+#+begin_src shell
+  pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib pandas
+#+end_src
+
+
+
+** Description
+
+The ~gsheets.py~ is just a module I made to house the Google Sheet authenication. It works like the quickstart above -- when you run it the first time it will ask for permission. After that it will use the local ~token.json~ file that it ran.
+
+The sheet I'm using is from [[https://ifttt.com/applets/pm39scPL-record-your-daily-fitbit-activity-in-a-google-spreadsheet][this IFTTT recipe]] that saves your daily Fitbit activity to a Google Sheet. The ~steps.py~ file used that.. but otherwise this file is generic but ~steps.py~ does do some Dataframe work with the imported data.
+
+My output, as I write this, is :
+
+#+begin_src text
+Walked 214 miles from 2021-03-01 to 2021-04-14
+
+count    44.000000
+mean      5.408636
+std       0.968395
+min       2.900000
+25%       4.620000
+50%       5.700000
+75%       5.972500
+max       7.650000
+Name: distance, dtype: float64
+
+
+biggest day was 2021-04-11 with 7.65
+worst day was 2021-03-31 with 2.9
+  week_number  distance  active_mins
+0      2021:9        31         2287
+1     2021:10        31         2018
+2     2021:11        25         1525
+3     2021:12        38         2152
+4     2021:13        31         2106
+5     2021:14        42         2531
+6     2021:15        16          827
+#+end_src
