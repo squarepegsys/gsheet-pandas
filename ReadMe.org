@@ -1,4 +1,4 @@
-* Google Sheets to Python example
+* Google Sheets to Pandas example
 
 This is a non-trivial version of how to get data from a Google Sheet into a Panda dataframe and then some examples of how to work with Pandas.
 
